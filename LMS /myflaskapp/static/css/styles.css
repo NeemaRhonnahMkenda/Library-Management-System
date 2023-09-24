@@ -1,0 +1,611 @@
+.sidenav {
+    height: 100%;
+    width: 350px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #193154;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: "Miriam Libre-Regular", Helvetica;
+  font-weight: 400;
+    color: #ffffff;
+    display: block;
+    margin-top: 20px;
+  }
+  
+  .sidenav a:hover {
+    color: #f4db76;
+  }
+
+  .divider {
+    margin-top: 90px;
+  }
+  
+  .sidenav a.active {
+    background-color: #3a68aa;
+    color: white;
+    border-radius: 40px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .label {
+    width: 277px;
+    height: 41px;
+  }
+  
+  .label .text-wrapper {
+    position: fixed;
+    width: 277px;
+    top: 20px;
+    left: 50px;
+    font-family: "Miriam Libre-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 50px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+
+  .topnav{
+    top: 0;
+    margin-top: 30px;
+  }
+  
+  .topnav .search-container {
+    float: right;
+  }
+  
+  .topnav input[type=text] {
+    padding: 6px;
+    font-size: 17px;
+    border: none;
+  }
+  
+  .topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .topnav .search-container button:hover {
+    background: #ccc;
+  }
+
+  .pageDetail{
+    margin-left: 400px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    font-family: "Miriam Libre-Regular", Helvetica;
+  font-weight: 500;
+  font-size: 40px;
+  color: #9e9e9e;
+  }
+
+  .RecentCheckout{
+    margin-left: 400px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    font-family: "Miriam Libre-Regular", Helvetica;
+  }
+
+    .RecentCheckout tr{
+        display: inline-flex;
+        align-items: flex-start;
+        gap: 55px;
+        position: relative;
+        color: #193154;
+        gap: 55px;
+    }
+
+    /* {% comment %} table {
+        border-collapse: collapse;
+        
+      }
+      
+      thead {
+        background-color: #f2f2f2;
+      }
+      
+      th, td {
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      
+      th {
+        background-color: #edeef0;
+        color: black;
+      } {% endcomment %} */
+
+
+    /* .bookTable{
+        margin-left: 400px;
+        margin-right: 50px;
+        margin-bottom: 50px;
+        font-family: "Miriam Libre-Regular", Helvetica;
+        margin-top: 50px;
+        width: 500px;
+    }
+    .bookTable th{
+        font-weight: 500;
+        font-size: 20px;
+        color: #9e9e9e;
+    }
+    
+        .bookTable tr{
+            display: inline-flex;
+            align-items: center;
+            gap: 85px;
+            position: relative;
+            color: #193154;
+        }
+    
+        table {
+            border-collapse: collapse;
+            
+        }
+        
+        thead {
+            background-color: #f2f2f2;
+        }
+        
+        th, td {
+            text-align: center;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        th {
+            background-color: #edeef0;
+            color: black;
+        } */
+
+        .bookTable {
+          margin: 50px auto; /* Center the table horizontally and add space around it */
+          font-family: "Miriam Libre-Regular", Helvetica;
+          width: 1300px; /* Adjust the table width to fit the content */
+          padding-left: 300px;
+          padding-top: 30px;
+      }
+      
+      .bookTable th {
+          font-weight: 500;
+          font-size: 20px;
+          color: #9e9e9e;
+          background-color: #edeef0; /* Header background color */
+          padding: 12px; /* Increase padding for header cells */
+          text-align: left; /* Align header text to the left */
+      }
+      
+      .bookTable td {
+          padding: 10px; /* Adjust padding for data cells */
+          text-align: center;
+      }
+      
+      .bookTable tr:nth-child(even) {
+          background-color: #f2f2f2;
+      }
+      
+      .bookTable .editBook,
+      .bookTable .deleteBook {
+          padding: 5px 10px; /* Add padding to the buttons */
+          margin: 2px; /* Adjust margin between buttons */
+          background-color: #193154;
+          color: white;
+          border: none;
+          cursor: pointer;
+          border-radius: 5px;
+      }
+      
+      /* Center buttons vertically and horizontally */
+      .bookTable .editBook,
+      .bookTable .deleteBook {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      
+      /* Adjust the gap between buttons in the same cell */
+      .bookTable td .editBook {
+          margin-right: 5px;
+      }
+      
+    
+    .editBook{
+        width: 100px;
+        height: 25px;
+        background-color: #193154;
+        color: #ffffff;
+        border-radius: 10px;
+        border: none;
+        font-family: "Miriam Libre-Regular", Helvetica;
+        font-weight: 500;
+        font-size: 15px;
+        letter-spacing: 0;
+        line-height: normal;
+        text-align: center;
+        margin-right: 10px;
+    }
+    
+    .editBook:hover{
+        background-color: #3a68aa;
+    }
+    .deleteBook{
+        width: 100px;
+        height: 25px;
+        background-color: #EB0404;
+        color: #ffffff;
+        border-radius: 10px;
+        border: none;
+        font-family: "Miriam Libre-Regular", Helvetica;
+        font-weight: 500;
+        font-size: 15px;
+        letter-spacing: 0;
+        line-height: normal;
+        text-align: center;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    .deleteBook:hover{
+        background-color: #FF0000;
+    }
+    .addBook {
+        width: 100px;
+        height: 35px;
+        background-color: #18A726;
+        color: #ffffff;
+        border-radius: 10px;
+        border: none;
+        font-family: "Miriam Libre-Regular", Helvetica;
+        font-weight: 500;
+        font-size: 15px;
+        letter-spacing: 0;
+        line-height: normal;
+        text-align: center;
+        float: right;
+        margin-right: 50px;
+    }
+    .addBook:hover{
+        background-color: #1DBF2A;
+    }
+
+    /* Center the form on the page */
+.addBookFormContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed to center vertically */
+}
+
+/* Style the form */
+.addBookForm {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+    margin-top: 0;
+}
+
+.addBookForm h2 {
+    margin-bottom: 20px;
+}
+
+.addBookForm label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.addBookForm input {
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the green submit button */
+.greenButton {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Hover effect for the submit button */
+.greenButton:hover {
+    background-color: #45a049;
+}
+
+/* style the pop-up form */
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    width: 400px;
+    height: 500px;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    font-family: "Miriam Libre-Regular", Helvetica;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: center;
+}
+
+/* Add styles to the form container */
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: auto;
+    padding-top: 10px;
+}
+
+/* Full-width input fields */
+.form-container input{
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.form-container select{
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 10px 0;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.form-container input[type=text]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+    background-color: #18b018;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.totals{
+    margin-left: 400px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    font-family: "Miriam Libre-Regular", Helvetica;
+    margin-top: 50px;
+    width: 500px;
+}
+
+.addMember {
+    width: 150px;
+    height: 35px;
+    background-color: #18A726;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    font-family: "Miriam Libre-Regular", Helvetica;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: center;
+    float: right;
+    margin-right: 50px;
+}
+
+.addMember:hover{
+    background-color: #1DBF2A;
+}
+
+.memberTable {
+  margin: 50px auto; /* Center the table horizontally and add space around it */
+  font-family: "Miriam Libre-Regular", Helvetica;
+  width: 1300px; /* Adjust the table width to fit the content */
+  padding-left: 300px;
+  padding-top: 30px;
+}
+
+.memberTable th {
+  font-weight: 500;
+  font-size: 20px;
+  color: #9e9e9e;
+  background-color: #edeef0; /* Header background color */
+  padding: 12px; /* Increase padding for header cells */
+  text-align: left; /* Align header text to the left */
+}
+
+.memberTable td {
+  padding: 10px; /* Adjust padding for data cells */
+  text-align: center;
+}
+
+.memberTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.memberTable .editMember,
+.memberTable .deleteMember {
+  padding: 5px 10px; /* Add padding to the buttons */
+  margin: 2px; /* Adjust margin between buttons */
+  background-color: #193154;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Center buttons vertically and horizontally */
+.memberTable .editMember,
+.memberTable .deleteMember {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Adjust the gap between buttons in the same cell */
+.memberTable td .editMember {
+  margin-right: 5px;
+}
+
+.editMember{
+width: 100px;
+height: 25px;
+background-color: #193154;
+color: #ffffff;
+border-radius: 10px;
+border: none;
+font-family: "Miriam Libre-Regular", Helvetica;
+font-weight: 500;
+font-size: 15px;
+letter-spacing: 0;
+line-height: normal;
+text-align: center;
+margin-right: 10px;
+}
+
+.editMember:hover{
+background-color: #3a68aa;
+}
+.deleteMember{
+width: 100px;
+height: 25px;
+background-color: #EB0404;
+color: #ffffff;
+border-radius: 10px;
+border: none;
+font-family: "Miriam Libre-Regular", Helvetica;
+font-weight: 500;
+font-size: 15px;
+letter-spacing: 0;
+line-height: normal;
+text-align: center;
+margin-top: 10px;
+margin-right: 10px;
+}
+.deleteMember:hover{
+background-color: #FF0000;
+}
+.addMember {
+width: 150px;
+height: 35px;
+background-color: #18A726;
+color: #ffffff;
+border-radius: 10px;
+border: none;
+font-family: "Miriam Libre-Regular", Helvetica;
+font-weight: 500;
+font-size: 15px;
+letter-spacing: 0;
+line-height: normal;
+text-align: center;
+float: right;
+margin-right: 50px;
+}
+.addMember:hover{
+background-color: #1DBF2A;
+}
+
+.lendBook{
+  width: 150px;
+height: 35px;
+background-color: #18A726;
+color: #ffffff;
+border-radius: 10px;
+border: none;
+font-family: "Miriam Libre-Regular", Helvetica;
+font-weight: 500;
+font-size: 15px;
+letter-spacing: 0;
+line-height: normal;
+text-align: center;
+float: right;
+margin-right: 50px;
+}
+.lendBook:hover{
+background-color: #1DBF2A;
+}
+
+.lendTable {
+  margin: 50px auto; /* Center the table horizontally and add space around it */
+  font-family: "Miriam Libre-Regular", Helvetica;
+  width: 1300px; /* Adjust the table width to fit the content */
+  padding-left: 300px;
+  padding-top: 30px;
+}
+
+.lendTable th {
+  font-weight: 500;
+  font-size: 20px;
+  color: #9e9e9e;
+  background-color: #edeef0; /* Header background color */
+  padding: 12px; /* Increase padding for header cells */
+  text-align: left; /* Align header text to the left */
+}
+
+.lendTable td {
+  padding: 10px; /* Adjust padding for data cells */
+  text-align: center;
+}
+
+.lendTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.lendTable .editLend,
+.lendTable .deleteLend {
+  padding: 5px 10px; /* Add padding to the buttons */
+  margin: 2px; /* Adjust margin between buttons */
+  background-color: #193154;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* styles.css */
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}

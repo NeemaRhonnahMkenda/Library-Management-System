@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <title>Members Management</title>
+</head>
+<body>
+    <header>
+    </header>
+    <nav class="sidenav">
+        <div class="label"><div class="text-wrapper">BiblioTrack</div></div>
+        <!-- Add navigation links to other pages -->
+        <div class="divider">
+            <a href="Dashboard.html">Dashboard</a>
+            <a href="Books.html">Books</a>
+            <a class="active" href="Members.html">Members</a>
+            <a href="checkout.html">Checkout</a>
+            </div>
+    </nav>
+
+    <div class="topnav">
+        <div class="search-container">
+            <form action="/search" method="get">
+                <input type="text" name="q" placeholder="Search..">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <h1 class="pageDetail">Member Management</h1>
+    <main>
+        <!-- Add content for managing members here -->
+        <p class="totals">Total Members: {{ member_count }}</p>
+
+        <button class="addMember" onclick="openForm()">Add New Member</button>
+
+        <div class="form-popup" id="myForm">
+            <form method="POST" action="/add_member" class="form-container">
+              <h1>Add Member</h1>
+          
+              <label for="memberID"><b>Member ID</b></label>
+              <input type="number" placeholder="Enter Member ID" id="memberID" name="memberID" required><br>
+          
+              <label for="Membername"><b>Name</b></label>
+              <input type="text" placeholder="Enter Full Name" id="Membername" name="Membername" required><br>
+          
+              <label for="email"><b>Email</b></label>
+              <input type="Email" placeholder="Enter Email" id="email" name="email" required><br>
+          
+              <button type="submit" class="btn" id="addbtn">Add</button>
+              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+          </div>
+
+          <script>
+            $(document).ready(function () {
+                $('#book-form').submit(function (event) {
+                    event.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: '/add_member',
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            // Show the pop-up message
+                            alert(response.message);
+                        },
+                        error: function () {
+                            // Handle errors here
+                            alert('An error occurred while adding the book.');
+                        }
+                    });
+                });
+            });
+
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+              }
+              
+              function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+              }
+        </script>
+
+        <table class="memberTable">
+            <tr>
+                <th>Member ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+            {% for member in members %}
+            <tr>
+                <td>{{ member.id }}</td>
+                <td>{{ member.name }}</td>
+                <td>{{ member.email }}</td>
+                <td>
+                    <button class="editMember">Edit</button>
+                    <br>
+                    <form method="POST" action="/delete_member">
+                        <input type="hidden" name="member_id" value="{{ member.id }}">
+                        <button type="submit" class="deleteMember">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+    <footer>
+        <!-- Add footer content here -->
+    </footer>
+</body>
+</html>

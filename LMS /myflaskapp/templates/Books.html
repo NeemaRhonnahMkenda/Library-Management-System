@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Books Management</title>
+</head>
+<body>
+    <header>
+    </header>
+    <nav class="sidenav">
+        <div class="label"><div class="text-wrapper">BiblioTrack</div></div>
+        <!-- Add navigation links to other pages -->
+        <div class="divider">
+            <a href="Dashboard.html">Dashboard</a>
+            <a class="active" href="Books.html">Books</a>
+            <a href="Members.html">Members</a>
+            <a href="checkout.html">Checkout</a>
+            </div>
+    </nav>
+
+    <div class="topnav">
+        <div class="search-container">
+            <form action="/search" method="get">
+                <input type="text" name="q" placeholder="Search..">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <h1 class="pageDetail">Book Management</h1>
+    <main>
+        <p class="totals">Total Books: {{ book_count }}</p>
+        <!-- Add content for managing books here -->
+        <button class="addBook" onclick="openForm()">Add Book</button>
+        
+        <div class="form-popup" id="myForm">
+            <form method="POST" action="/add_book" class="form-container">
+              <h1>Add Book</h1>
+          
+              <label for="isbn"><b>ISBN</b></label>
+              <input type="text" placeholder="Enter ISBN" id="isbn" name="isbn" required><br>
+          
+              <label for="title"><b>Title</b></label>
+              <input type="text" placeholder="Enter Title" id="title" name="title" required><br>
+          
+              <label for="author"><b>Author</b></label>
+              <input type="text" placeholder="Enter Author" id="author" name="author" required><br>
+          
+              <button type="submit" class="btn" id="addbtn">Add</button>
+              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+          </div>
+
+        
+        
+        <script>
+            $(document).ready(function () {
+                $('#book-form').submit(function (event) {
+                    event.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: '/add_book',
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            // Show the pop-up message
+                            alert(response.message);
+                        },
+                        error: function () {
+                            // Handle errors here
+                            alert('An error occurred while adding the book.');
+                        }
+                    });
+                });
+            });
+
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+              }
+              
+              function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+              }
+        </script>
+
+        <table class="bookTable">
+            <tr>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Actions</th>
+            </tr>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>
+                    <button class="editBook">Edit</button>
+                    <br>
+                    <form method="POST" action="/delete_book">
+                        <input type="hidden" name="book_id" value="{{ book.id }}">
+                        <button type="submit" class="deleteBook">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </table>
+    </main>
+    <footer>
+        <!-- Add footer content here -->
+    </footer>
+</body>
+
+</html>

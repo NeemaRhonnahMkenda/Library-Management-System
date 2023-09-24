@@ -1,0 +1,131 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <title>Checkout</title>
+</head>
+<body>
+    <header>
+    </header>
+    <nav class="sidenav">
+        <div class="label"><div class="text-wrapper">BiblioTrack</div></div>
+        <!-- Add navigation links to other pages -->
+        <div class="divider">
+            <a href="Dashboard.html">Dashboard</a>
+            <a href="Books.html">Books</a>
+            <a href="Members.html">Members</a>
+            <a class="active" href="checkout.html">Checkout</a>
+        </div>
+    </nav>
+
+    <div class="topnav">
+        <div class="search-container">
+            <form action="/search" method="get">
+                <input type="text" name="q" placeholder="Search..">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <h1 class="pageDetail">Checkout</h1>
+    <main>
+        <!-- Add content for the checkout process here -->
+        <p class="totals">Total Lent: {{ borrowed_count }}</p>
+
+        <button class="lendBook" onclick="openLendForm()">Lend Book</button>
+
+        <!-- Lend Book Form -->
+        <div class="form-popup" id="lendForm">
+            <form method="POST" action="/lend_book" class="form-container">
+                <h1>Lend A Book</h1>
+        
+                <label for="bookTitle"><b>Book Title</b></label>
+                <select id="bookTitle" name="bookTitle" required>
+                    <option value="" disabled selected>Select a Book</option>
+                    {% for book in books %}
+                        <option value="{{ book.title }}">{{ book.title }}</option>
+                    {% endfor %}
+                </select><br>
+
+                <label for="isbn"><b>ISBN</b></label>
+                <select id="isbn" name="isbn" required>
+                    <option value="" disabled selected>Select a Book</option>
+                    {% for book in books %}
+                        <option value="{{ book.isbn }}">{{ book.isbn }}</option>
+                    {% endfor %}
+                </select><br>
+
+                <label for="author"><b>Author</b></label>
+                <select id="author" name="author" required>
+                    <option value="" disabled selected>Select a Book</option>
+                    {% for book in books %}
+                        <option value="{{ book.author }}">{{ book.author }}</option>
+                    {% endfor %}
+                </select><br>
+        
+                <label for="memberName"><b>Member Name</b></label>
+                <select id="memberName" name="memberName" required>
+                    <option value="" disabled selected>Select a Member</option>
+                    {% for member in members %}
+                        <option value="{{ member.name }}">{{ member.name }}</option>
+                    {% endfor %}
+                </select><br>
+        
+                <label for="dueDate"><b>Due Date</b></label>
+                <input type="date" id="dueDate" name="dueDate" required><br> 
+        
+                <button type="submit" class="btn" id="lendBtn">Lend</button>
+                <button type="button" class="btn cancel" onclick="closeLendForm()">Close</button>
+            </form>
+        </div>
+
+        <!-- Borrowed Books Table -->
+        <table class="lendTable">
+            <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Member</th>
+                    <th>Due Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in borrowed_books %}
+                <tr>
+                    <td>{{ book.isbn_number }}</td>
+                    <td>{{ book.book_name }}</td>
+                    <td>{{ book.author_name }}</td>
+                    <td>{{ book.member_name }}</td>
+                    <td>{{ book.borrowed_date }}</td>
+                    <td><button class="returnBook" onclick="returnBook('{{ book.id }}')">Return</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table> 
+    </main>
+    <footer>
+        <!-- Add footer content here -->
+    </footer>
+    </body>
+    <script>
+        function openLendForm() {
+            document.getElementById("lendForm").style.display = "block";
+        }
+        
+        function closeLendForm() {
+            document.getElementById("lendForm").style.display = "none";
+        }
+
+        function returnBook(id) {
+            window.location.href = "/return_book?id=" + id;
+        }
+    </script>
+</html>
+

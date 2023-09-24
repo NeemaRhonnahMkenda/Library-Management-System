@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <title>Library Dashboard</title>
+</head>
+<body>
+    <header>
+    </header>
+    <nav class="sidenav">
+        <div class="label"><div class="text-wrapper">BiblioTrack</div></div>
+        <!-- Add navigation links to other pages -->
+        <div class="divider">
+            <a class="active" href="Dashboard.html">Dashboard</a>
+            <a href="Books.html">Books</a>
+            <a href="Members.html">Members</a>
+            <a href="checkout.html">Checkout</a>
+        </div>
+    </nav>
+
+    <div class="topnav">
+        <div class="search-container">
+            <form action="/search" method="get">
+                <input type="text" name="q" placeholder="Search..">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    
+    <h1 class="pageDetail">Dashboard</h1>
+
+    <main>
+        <table class="memberTable">
+            <tr>
+                <th>Member Name</th>
+                <th>Total Borrowed Books</th>
+            </tr>
+            {% for member, total_borrowed in top_borrowers %}
+            <tr>
+                <td>{{ member.name }}</td>
+                <td>{{ total_borrowed }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+
+          <table class="bookTable">
+            <tr>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author</th>
+            </tr>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+    </main>
+    <footer>
+        <!-- Add footer content here -->
+    </footer>
+</body>
+</html>

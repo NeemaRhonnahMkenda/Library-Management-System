@@ -1,0 +1,13 @@
+<!-- search_results.html -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <title>Checkout</title>
+</head>
+<h1>Search Results for "{{ search_query }}"</h1>
+
+{% for book in results %}
+    <h2>{{ book.title | safe }}</h2>
+    <p>{{ book.author }}</p>
+{% endfor %}
